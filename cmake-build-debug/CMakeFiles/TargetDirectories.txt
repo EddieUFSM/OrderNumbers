@@ -1,0 +1,3 @@
+C:/Arquivos/OrderNumbers-master/OrderNumbers/cmake-build-debug/CMakeFiles/OrderNumbers.dir
+C:/Arquivos/OrderNumbers-master/OrderNumbers/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Arquivos/OrderNumbers-master/OrderNumbers/cmake-build-debug/CMakeFiles/rebuild_cache.dir

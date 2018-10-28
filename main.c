@@ -94,7 +94,7 @@ void analizeSort(void (*func_ptr)(int*, int), int* vet, int tam){
 
     aleatorio(vet, tam);
     bucket_sort(func_ptr, vet,tam);
-    imprimeVetor(vet,tam);
+    //imprimeVetor(vet,tam);
 
     clock_t stop = clock();
     double elapsed = (double) (stop - start) / CLOCKS_PER_SEC;
@@ -140,10 +140,50 @@ void shellSort(int *vet, int tam){
     }
 }
 
+
+
+void heapsort(int a[], int n) {
+
+    int i = n / 2, pai, filho, t;
+
+    for (;;) {
+        if (i > 0) {
+            i--;
+            t = a[i];
+        } else {
+            n--;
+            if (n == 0) return;
+            t = a[n];
+            a[n] = a[0];
+        }
+
+        pai = i;
+
+        //Primeiro será feita a comparação com o filho da esquerda.
+        filho = i * 2 + 1;
+
+        while (filho < n) {
+
+            //Se o filho da esquerda for menor do que o filho da direita,então será feita a troca do filho que será comparado.
+            if ((filho + 1 < n)  &&  (a[filho + 1] > a[filho]))
+                filho++;
+            if (a[filho] > t) {
+                a[pai] = a[filho];
+                pai = filho;
+                filho = pai * 2 + 1;
+            } else {
+                break;
+            }
+        }
+        a[pai] = t;
+    }
+}
+
 void main(){
-    int cem = 100000;
-    int vet[cem];
-    analizeSort(&bubble, vet, cem);
-    analizeSort(&insertSort, vet, cem);
-    analizeSort(&shellSort, vet, cem);
+    int quant = 100000;
+    int vet[quant];
+    analizeSort(&bubble, vet, quant);
+    analizeSort(&insertSort, vet, quant);
+    analizeSort(&shellSort, vet, quant);
+    analizeSort(&heapsort, vet, quant);
 }

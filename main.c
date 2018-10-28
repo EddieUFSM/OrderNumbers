@@ -10,7 +10,7 @@ typedef struct bucket{
     int* balde;
 }Bucket;
 
-void bubble(int v[],int parametro1, int parametro2);
+void bubble(int v[],int parametro1);
 
 void bucket_sort(void (*func_ptr)(int*, int), int* vet, int tam) {
     int i, j, k, clas;
@@ -51,7 +51,7 @@ void bucket_sort(void (*func_ptr)(int*, int), int* vet, int tam) {
     }
 }
 
-void bubble(int v[], int tam, int nulo){
+void bubble(int v[], int tam){
     int i,j,temp,flag;
     if(tam)
         for(j=0;j<tam-1;j++){
@@ -89,7 +89,7 @@ void imprimeVetor(int* vet, int tam){
     }
 }
 
-void analizeSort(void (*func_ptr)(int*, int, int), int* vet, int tam){
+void analizeSort(void (*func_ptr)(int*, int), int* vet, int tam){
     clock_t start = clock();
 
     aleatorio(vet, tam);
@@ -121,7 +121,7 @@ void insertSort(int *vetor, int tam, int nulo){
 
 
 
-void shellSort(int *vet, int tam, int nulo){
+void shellSort(int *vet, int tam){
     int i, j, k=0, temp;
     int gaps[8]={701,301,132,57,23,10,4,1};
     while (gaps[k] > ((tam/2)-1))
@@ -141,7 +141,7 @@ void shellSort(int *vet, int tam, int nulo){
 }
 
 void main(){
-    int cem = 100;
+    int cem = 100000;
     int vet[cem];
     analizeSort(&bubble, vet, cem);
     analizeSort(&insertSort, vet, cem);

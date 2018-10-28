@@ -12,7 +12,7 @@ typedef struct bucket{
 
 void bubble(int v[],int parametro1, int parametro2);
 
-void bucket_sort(void (*func_ptr)(int*, int, int), int* vet, int tam) {
+void bucket_sort(void (*func_ptr)(int*, int), int* vet, int tam) {
     int i, j, k, clas;
     clas = (int) ceill(1 + 3.3 * log10((double) tam));
     Bucket *b[clas];
@@ -39,7 +39,7 @@ void bucket_sort(void (*func_ptr)(int*, int, int), int* vet, int tam) {
 
     for(i=0;i<clas;i++)                     //ordena os baldes
         if(b[i]->topo)
-            func_ptr(b[i]->balde,0,b[i]->topo);
+            func_ptr(b[i]->balde, b[i]->topo);
 
     i=0;
 

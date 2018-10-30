@@ -29,7 +29,8 @@ void bucket_sort(void (*func_ptr)(int*, int), int* vet, int tam) {
             if(j<0)
                 break;
             if(vet[i]>=j*10){
-                b[j]->balde[b[j]->topo]=vet[i];
+                int aux = b[j]->topo;
+                b[j]->balde[aux]=vet[i];
                 (b[j]->topo)++;
                 break;
             }
@@ -91,18 +92,15 @@ void imprimeVetor(int* vet, int tam){
 
 void analizeSort(void (*func_ptr)(int*, int), int* vet, int tam){
     clock_t start = clock();
-
-    aleatorio(vet, tam);
     bucket_sort(func_ptr, vet,tam);
     //imprimeVetor(vet,tam);
-
     clock_t stop = clock();
     double elapsed = (double) (stop - start) / CLOCKS_PER_SEC;
     printf("\nTime elapsed: %.5f\n", elapsed);
 }
 
 
-void insertSort(int *vetor, int tam, int nulo){
+void insertSort(int *vetor, int tam){
     int cont, cont2, cont3, aux;
 
     for(cont=1; cont < tam; cont++){
@@ -180,10 +178,15 @@ void heapsort(int a[], int n) {
 }
 
 void main(){
-    int quant = 100000;
-    int vet[quant];
-    analizeSort(&bubble, vet, quant);
+    int quant = 10000000;
+    int* vet = malloc(sizeof(int)* quant);
+
+    aleatorio(vet, quant);
+    //analizeSort(&shellSort, vet, quant);
+    //analizeSort(&heapsort, vet, quant);
+    //analizeSort(&bubble, vet, quant);
     analizeSort(&insertSort, vet, quant);
-    analizeSort(&shellSort, vet, quant);
-    analizeSort(&heapsort, vet, quant);
+
+
+    free(vet);
 }
